@@ -9,12 +9,39 @@
 <body>
     <header>
         <h1>I'veBeenThere!</h1>
-        <a href="selectType.html"><button id="addPostBtn">Add New Blog Post</button></a>
-    </header>
+        <button id="addPostBtn">Add New Blog Post</button>
     </header>
     <div class="content-container">
-        
+        <div id="restaurantFormContainer" class="hidden">
+            <form id="restaurantForm">
+                <label for="Title">Title:</label><br>
+                <input type="text" id="Title" name="Title" required><br>
+                
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required><br>
+
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required><br>
+
+                <label for="photoUpload">Upload Photos:</label>
+                <input type="file" id="photoUpload" name="photoUpload" accept="image/*" multiple><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+
+                <label for="recommendation">Would you recommend?</label>
+                <input type="checkbox" id="recommendation" name="recommendation" value="yes"> Yes
+                <input type="checkbox" id="recommendation" name="recommendation" value="no"> No<br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div id="poop" class="container">
+            
+        </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

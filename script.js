@@ -1,53 +1,32 @@
-document.getElementById("restaurantBtn").addEventListener("click", function() {
+document.getElementById("addPostBtn").addEventListener("click", function() {
     document.getElementById("restaurantFormContainer").classList.remove("hidden");
 });
-
-document.getElementById("accommodationBtn").addEventListener("click", function() {
-    document.getElementById("restaurantFormContainer").classList.remove("hidden");
-});
-
-document.getElementById("activityBtn").addEventListener("click", function() {
-    document.getElementById("restaurantFormContainer").classList.remove("hidden");
-});
-
-
-
 
 function handleSubmit(event) {
-    
     event.preventDefault(); 
     const newPost = document.createElement("div");
     newPost.classList.add("blogPost");
     newPost.classList.add("slideIn");
 
-    
+    const title = document.getElementById("Title").value;
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
     const description = document.getElementById("description").value;
-    const recommendInput = document.querySelector('input[name="recommend"]:checked');
+    const recommendInput = document.querySelector('input[name="recommendation"]:checked');
     const recommend = recommendInput ? recommendInput.value : "";
 
-
-    
-    
-        var formData = {
+    const formData = {
+        title: title,
         startDate: startDate,
         endDate: endDate,
         description: description,
-        recommendation: recommendation,
+        recommend: recommend,
     };
-   console.log(formData); 
+    console.log(formData); 
 
- 
-    
-    
-
-   
-
-    
-    const title = document.createElement("h2");
-    title.textContent = "Restaurant"; 
-    newPost.appendChild(title);
+    const postTitle = document.createElement("h2");
+    postTitle.textContent = title; 
+    newPost.appendChild(postTitle);
 
     const dateRange = document.createElement("p");
     dateRange.textContent = `Date: ${startDate} - ${endDate}`;
@@ -63,7 +42,6 @@ function handleSubmit(event) {
 
     const photoUpload = document.getElementById("photoUpload").files;
 
-
     for (let i = 0; i < photoUpload.length; i++) {
         const imageUrl = URL.createObjectURL(photoUpload[i]);
         const img = document.createElement("img");
@@ -72,21 +50,16 @@ function handleSubmit(event) {
         newPost.appendChild(img);
     }
 
-
-
     const blogPostsContainer = document.getElementById("poop");
     blogPostsContainer.appendChild(newPost);
     document.getElementById("restaurantForm").reset();
-    
+
     setTimeout(() => {
-        newPost.style.transform = "translateY(0)"; // Move to final position
-    }, 100); // Delay for reflow
+        newPost.style.transform = "translateY(0)"; 
+    }, 100); 
 
+  
+    document.getElementById("restaurantFormContainer").classList.add("hidden");
 }
-
-
-   
-
-
 
 document.getElementById("restaurantForm").addEventListener("submit", handleSubmit);
